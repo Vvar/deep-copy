@@ -2,7 +2,7 @@
   "name": "mte/deep-copy",
   "description": "Модуль клонирования объектов",
   "type": "library",
-  "homepage": "http://imc-git.mte-telecom.ru/mte/mtedeepcopy",
+  "homepage": "git@github.com:Vvar/deep-copy.git",
   "authors": [{
     "name": "Strakhov Valeriy",
     "email": "Strakhov@mte-telecom.ru"
@@ -13,7 +13,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "Mte\\DeepCopy\\": "src"
+      "Mte\\DeepCopy_1\\": "src"
     },
     "classmap": [
       "./Module.php"
