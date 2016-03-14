@@ -1,5 +1,5 @@
 {
-  "name": "mte/mte-deep-copy",
+  "name": "mte/deep-copy",
   "description": "Модуль клонирования объектов",
   "type": "library",
   "homepage": "http://imc-git.mte-telecom.ru/mte/mtedeepcopy",
@@ -13,7 +13,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "MteDeepCopy": "src"
+      "Mte\\DeepCopy": "src"
     },
     "classmap": [
       "./Module.php"
