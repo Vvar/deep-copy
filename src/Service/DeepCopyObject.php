@@ -4,7 +4,7 @@ namespace Mte\DeepCopy\Service;
 use DeepCopy\Filter\Filter;
 use DeepCopy\DeepCopy;
 use DeepCopy\Matcher\Matcher;
-use MteDeepCopy\Options\ModuleOptions;
+use Mte\DeepCopy\Options\ModuleOptions;
 use ReflectionClass;
 use Zend\Stdlib\InitializableInterface;
 
@@ -15,6 +15,10 @@ use Zend\Stdlib\InitializableInterface;
  */
 class Copy extends AbstractService implements InitializableInterface
 {
+    /**
+     * @var string
+     */
+    protected $alias = null;
 
     /**
      * Объект DeepCopy
@@ -38,6 +42,15 @@ class Copy extends AbstractService implements InitializableInterface
         $this->deepCopy = $deepCopy;
     }
 
+    /**
+     * @param array $params
+     */
+    public function __construct(array $params)
+    {
+        if (array_key_exists('alias', $params) && is_string($params['alias'])) {
+            $this->setAlias($params['alias']);
+        }
+    }
 
     /**
      * Init an object
@@ -50,12 +63,10 @@ class Copy extends AbstractService implements InitializableInterface
         $moduleOptions = $this->getServiceManager()->get(ModuleOptions::class);
         $objectsCopyScheme = $moduleOptions->getObjectsCopyScheme();
 
-        foreach ($objectsCopyScheme as $objectCopyScheme ) {
-            if (is_array($objectCopyScheme)) {
-                foreach($objectCopyScheme as $key => $params) {
-                    if ($key != 'options' ) {
-                        $this->addFilter($deepCopy, $params);
-                    }
+        if (array_key_exists($this->getAlias(), $objectsCopyScheme) && is_array($objectsCopyScheme[$this->getAlias()])) {
+            foreach($objectsCopyScheme[$this->getAlias()] as $key => $params) {
+                if ($key != 'options' ) {
+                    $this->addFilter($deepCopy, $params);
                 }
             }
         }
@@ -139,4 +150,22 @@ class Copy extends AbstractService implements InitializableInterface
             $deepCopy->addFilter($filter, $matcher);
         }
     }
+
+    /**
+     * @return string
+     */
+    public function getAlias()
+    {
+        return $this->alias;
+    }
+
+    /**
+     * @param string $alias
+     */
+    public function setAlias($alias)
+    {
+        $this->alias = $alias;
+    }
+
+
 }

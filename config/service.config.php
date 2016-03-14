@@ -3,10 +3,12 @@ use Mte\DeepCopy\Service;
 
 return [
     /**
-     * Use: $this->getServiceLocator()->get('mteDeepCopy_Copy');
+     * Use: $this->getServiceLocator()->get('mteDeepCopy_ProjectPrototype');
      */
-    'Copy' => [
+    'ProjectPrototype' => [
         'class' => Service\Copy::class,
-        'options' => null,
+        'options' => [
+            'alias' => 'ProjectPrototype'
+        ]
     ],
 ];

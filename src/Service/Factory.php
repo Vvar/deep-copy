@@ -50,7 +50,7 @@ class Factory implements AbstractFactoryInterface
     public function createServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
     {
         $className = str_replace($this->getAlias() . '_', '', $requestedName);
-        /** @var \Mte\MteDeepCopy\Options\ModuleOptions $moduleOptions */
+        /** @var \Mte\DeepCopy\Options\ModuleOptions $moduleOptions */
         $moduleOptions = $serviceLocator->get(ModuleOptions::class);
         $serviceOptions = $moduleOptions->getServiceParams($className);
 
@@ -62,9 +62,7 @@ class Factory implements AbstractFactoryInterface
         $serviceOptions = isset($serviceOptions['options']) ? $serviceOptions['options'] : null;
 
         /** @var Copy $service */
-        $service = new $serviceClass (
-            $serviceOptions
-        );
+        $service = new $serviceClass($serviceOptions);
 
         $service->setServiceManager($serviceLocator);
         $service->init();
