@@ -1,5 +1,5 @@
 <?php
-namespace Mte\MteDeepCopy;
+namespace Mte\DeepCopy;
 
 use DeepCopy\DeepCopy;
 use Zend\Mvc\MvcEvent;
@@ -9,7 +9,7 @@ use Mte\DeepCopy\Service\Factory;
 
 /**
  * Class Module
- * @package Mte\MteDeepCopy
+ * @package Mte\DeepCopy
  */
 class Module
 {
