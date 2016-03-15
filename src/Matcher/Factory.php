@@ -17,7 +17,6 @@ class Factory implements FactoryInterface
      */
     public function create(array $specification)
     {
-        $matcher = null;
         if (array_key_exists('class', $specification)
             && is_string($specification['class'])
             && array_key_exists('options', $specification)

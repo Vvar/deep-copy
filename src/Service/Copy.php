@@ -160,29 +160,29 @@ class Copy implements InitializableInterface, CopyInterface
      */
     protected function addFilter(DeepCopy $deepCopy, $params)
     {
-        $filter = null;
-        if (array_key_exists('filter', $params)) {
-            if (is_array($params['filter'])) {
-                $filter = $this->getFilter()->create($params['filter']);
-            } elseif (is_object($params['filter'])) {
-                $filter = $params['filter'];
-            }
-        }
-
-        $matcher = null;
-        if (array_key_exists('matcher', $params)) {
-            if (is_array($params['matcher'])) {
-                $matcher = $this->getMatcher()->create($params['matcher']);
-            } elseif (is_object($params['matcher'])
-                && array_key_exists(Matcher::class, class_implements($params['matcher']))
-            ) {
-                $matcher = $params['matcher'];
-            }
-        }
+        $filter = $this->createForFilter('filter', $params);
+        $matcher = $this->createForFilter('matcher', $params);
 
         if ($matcher instanceof Matcher && $filter instanceof Filter) {
             $deepCopy->addFilter($filter, $matcher);
         }
+    }
+
+    /**
+     * @param string $name
+     * @param array $params
+     * @return null
+     */
+    protected function createForFilter($name, array $params = [])
+    {
+        $object = null;
+        if (is_array($params[$name])) {
+            $getterName = 'get' . ucfirst($name);
+            $object = $this->$getterName()->create($params[$name]);
+        } elseif (is_object($params[$name])) {
+            $object = $params[$name];
+        }
+        return $object;
     }
 
     /**
