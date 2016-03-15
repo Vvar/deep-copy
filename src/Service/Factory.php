@@ -4,6 +4,9 @@ namespace Mte\DeepCopy\Service;
 use Zend\ServiceManager\AbstractFactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Mte\DeepCopy\Options\ModuleOptions;
+use Mte\DeepCopy\Exception\RuntimeException;
+use Mte\DeepCopy\Exception\InvalidArgumentException;
+use MteBase\Service\AbstractService;
 
 /**
  * Class AbstractFactory
@@ -45,17 +48,17 @@ class Factory implements AbstractFactoryInterface
      * @param $name
      * @param $requestedName
      * @return mixed
-     * @throws \Exception
+     * @throws RuntimeException
      */
     public function createServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
     {
-        $className = str_replace($this->getAlias() . '_', '', $requestedName);
+        $className = substr_replace($requestedName, '', 0, strlen($this->getAlias()) + 1);
         /** @var \Mte\DeepCopy\Options\ModuleOptions $moduleOptions */
         $moduleOptions = $serviceLocator->get(ModuleOptions::class);
         $serviceOptions = $moduleOptions->getServiceParams($className);
 
         if (!is_array($serviceOptions)) {
-            throw new \Exception("Service {$className} does not found.");
+            throw new RuntimeException("Service {$className} does not found.");
         }
 
         $serviceClass = isset($serviceOptions['class']) ? $serviceOptions['class'] : null;
@@ -63,11 +66,15 @@ class Factory implements AbstractFactoryInterface
 
         /** @var Copy $service */
         $service = new $serviceClass($serviceOptions);
-
-        $service->setServiceManager($serviceLocator);
-        $service->init();
-
-        return $service;
+        if ($service instanceof AbstractService
+            && method_exists($service, 'init')
+        ) {
+            $service->setServiceManager($serviceLocator);
+            $service->init();
+            return $service;
+        } else {
+            throw new RuntimeException("Не верный тип объекта");
+        }
     }
 
     /**

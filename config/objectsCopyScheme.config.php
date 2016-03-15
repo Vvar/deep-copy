@@ -8,9 +8,6 @@ use DeepCopy\Matcher\PropertyMatcher;
 
 return [
     'ProjectPrototype' => [
-        'options' => [
-            'history' => true,
-        ],
         [
             'filter' => [
                 'class' => DoctrineCollectionFilter::class,
@@ -23,7 +20,10 @@ return [
                 ]
             ],
         ],
-
+//        [
+//            'filter' => new KeepFilter(),
+//            'matcher' => new PropertyMatcher(Mte\TargetedInvestmentProgram\Entity\Project\Prototype::class, 'versions'),
+//        ],
         [
             'filter' => new KeepFilter(),
             'matcher' => new PropertyMatcher(Mte\TargetedInvestmentProgram\Entity\Project\Prototype::class, 'status'),
@@ -38,16 +38,28 @@ return [
                 'options' => []
             ],
             'matcher' => [
-                'class' => PropertyMatcher::class,
+                'class' => PropertyNameMatcher::class,
                 'options' => [
-                    'objectClass' => Mte\TargetedInvestmentProgram\Entity\Project\Prototype::class,
                     'property' => 'parent',
+                ]
+            ],
+        ],
+
+        [
+            'filter' => [
+                'class' => KeepFilter::class,
+                'options' => []
+            ],
+            'matcher' => [
+                'class' => PropertyNameMatcher::class,
+                'options' => [
+                    'property' => 'unions',
                 ]
             ],
         ],
         [
             'filter' => new KeepFilter(),
-            'matcher' => new PropertyMatcher(Mte\TargetedInvestmentProgram\Entity\Activity\Prototype::class, 'object'),
+            'matcher' => new PropertyNameMatcher('object'),
         ],
         [
             'filter' => new KeepFilter(),

@@ -15,7 +15,6 @@ class Module
 {
 
     public function init() {
-
     }
 
     /** @var  ServiceLocatorInterface */
@@ -58,41 +57,5 @@ class Module
             ],
         ];
         return $config;
-    }
-
-    /**
-     * Expected to return \Zend\ServiceManager\Config object or array to seed
-     * such an object.
-     *
-     * @return array|\Zend\ServiceManager\Config
-     */
-    public function getControllerConfig()
-    {
-        return [
-            'invokables' => [
-
-            ]
-
-        ];
-    }
-    /**
-     * @return array
-     */
-    public function getServiceConfig()
-    {
-        return [
-            'aliases' => [
-                'mteDeepCopyOptions' => ModuleOptions::class,
-            ],
-            'factories' => [
-                ModuleOptions::class => ModuleOptions::class,
-            ],
-            'abstract_factories' => [
-                Factory::class
-            ],
-            'invokables' => [
-                'deepCopy' => DeepCopy::class
-            ]
-        ];
     }
 }

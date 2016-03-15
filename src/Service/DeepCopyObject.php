@@ -7,13 +7,16 @@ use DeepCopy\Matcher\Matcher;
 use Mte\DeepCopy\Options\ModuleOptions;
 use ReflectionClass;
 use Zend\Stdlib\InitializableInterface;
+use MteBase\Service\AbstractService as MteAbstractService;
+use Mte\DeepCopy\Exception\RuntimeException;
+use Mte\DeepCopy\Exception\InvalidArgumentException;
 
 
 /**
  * Class CloneObject
  * @package Mte\TargetedInvestmentProgram\Grid
  */
-class Copy extends AbstractService implements InitializableInterface
+class Copy extends MteAbstractService implements InitializableInterface
 {
     /**
      * @var string
@@ -63,13 +66,19 @@ class Copy extends AbstractService implements InitializableInterface
         $moduleOptions = $this->getServiceManager()->get(ModuleOptions::class);
         $objectsCopyScheme = $moduleOptions->getObjectsCopyScheme();
 
-        if (array_key_exists($this->getAlias(), $objectsCopyScheme) && is_array($objectsCopyScheme[$this->getAlias()])) {
+        if (!is_null($this->getAlias())
+            && array_key_exists($this->getAlias(), $objectsCopyScheme)
+            && is_array($objectsCopyScheme[$this->getAlias()])
+        ) {
             foreach($objectsCopyScheme[$this->getAlias()] as $key => $params) {
                 if ($key != 'options' ) {
                     $this->addFilter($deepCopy, $params);
                 }
             }
+        } else {
+            throw new InvalidArgumentException('Не верный параметр');
         }
+
         $this->setDeepCopy($deepCopy);
     }
 
@@ -81,11 +90,20 @@ class Copy extends AbstractService implements InitializableInterface
     public function cloneObject($object, array $params = [])
     {
         if (!is_object($object)) {
-            throw new \RuntimeException('Не верный тип параметра');
+            throw new InvalidArgumentException('Не верный тип параметра');
         }
 
-        $copyObject = $this->getDeepCopy()->copy($object);
-        if (array_key_exists('history', $params) && $params['history']) {
+        try {
+            $copyObject = $this->getDeepCopy()->copy($object);
+        } catch (\DeepCopy\Exception\CloneException $e) {
+            throw new RuntimeException($e->getMessage());
+        }
+
+        if (array_key_exists('history', $params)
+            && $params['history']
+            && is_bool($params['history'])
+            && method_exists($copyObject, 'setActual')
+        ) {
             $copyObject->setActual($object);
         }
 
@@ -103,10 +121,10 @@ class Copy extends AbstractService implements InitializableInterface
             if (is_array($params['filter']) && is_string($params['filter']['class'])) {
                 $reflection = new ReflectionClass($params['filter']['class']);
                 if (!$reflection->isInstantiable()){
-                    throw new \RuntimeException('Невозможно создать экземпляр класса');
+                    throw new RuntimeException('Невозможно создать экземпляр класса');
                 }
                 if (!$reflection->implementsInterface(Filter::class)) {
-                    throw new \RuntimeException('Filter должен реализовывать ' . Filter::class);
+                    throw new RuntimeException('Filter должен реализовывать ' . Filter::class);
                 }
 
                 if (array_key_exists('options', $params['filter'])
@@ -132,10 +150,10 @@ class Copy extends AbstractService implements InitializableInterface
             ) {
                 $reflection = new ReflectionClass($params['matcher']['class']);
                 if (!$reflection->isInstantiable()){
-                    throw new \RuntimeException('Невозможно создать экземпляр класса');
+                    throw new RuntimeException('Невозможно создать экземпляр класса');
                 }
                 if (!$reflection->implementsInterface(Matcher::class)) {
-                    throw new \RuntimeException('Matcher должен реализовывать ' . Matcher::class);
+                    throw new RuntimeException('Matcher должен реализовывать ' . Matcher::class);
                 }
                 $matcher = $reflection->newInstanceArgs($params['matcher']['options']);
 
@@ -166,6 +184,4 @@ class Copy extends AbstractService implements InitializableInterface
     {
         $this->alias = $alias;
     }
-
-
 }
