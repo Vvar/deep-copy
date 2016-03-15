@@ -90,9 +90,7 @@ Expansion module https://github.com/myclabs/DeepCopy for integration with zf2.
 
 --- use ---
 
-/** @var \Mte\DeepCopy\Service\Copy $serviceCopy */
 $serviceCopy = $this->getServiceLocator()->get('mteDeepCopy_alias_1');
-/** @var myEntity $myEntity */
 $oldProjectPrototype = $serviceCopy->cloneObject($myEntity, array['Additional actions when cloning']);
 
 
