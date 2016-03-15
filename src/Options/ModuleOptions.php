@@ -7,7 +7,7 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
  * Class ModuleOptions
- * @package Mte\StorageDocument\Options
+ * @package Mte\DeepCopy\Options
  */
 class ModuleOptions extends AbstractOptions implements FactoryInterface
 {
@@ -21,6 +21,11 @@ class ModuleOptions extends AbstractOptions implements FactoryInterface
      * @var array
      */
     protected $service;
+
+    /**
+     * @var array
+     */
+    protected $filter;
 
     /**
      * @var array
@@ -70,6 +75,31 @@ class ModuleOptions extends AbstractOptions implements FactoryInterface
     public function getServiceParams($serviceName)
     {
         return isset($this->service[$serviceName]) ? $this->service[$serviceName] : false;
+    }
+
+    /**
+     * @return array
+     */
+    public function getFilter()
+    {
+        return $this->filter;
+    }
+
+    /**
+     * @param array $filter
+     */
+    public function setFilter($filter)
+    {
+        $this->filter = $filter;
+    }
+
+    /**
+     * @param $filterName
+     * @return bool
+     */
+    public function getFilterParams($filterName)
+    {
+        return isset($this->filter[$filterName]) ? $this->filter[$filterName] : false;
     }
 
     /**

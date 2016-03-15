@@ -3,6 +3,8 @@
 use DeepCopy\DeepCopy;
 use Mte\DeepCopy\Options\ModuleOptions;
 use Mte\DeepCopy\Service\Factory;
+use Mte\DeepCopy\Filter\Factory as FilterFactory;
+use Mte\DeepCopy\Matcher\Factory as MatcherFactory;
 
 return [
     'mteDeepCopy' => [
@@ -20,7 +22,9 @@ return [
             Factory::class
         ],
         'invokables' => [
-            'deepCopy' => DeepCopy::class
+            'deepCopy' => DeepCopy::class,
+            FilterFactory::class => FilterFactory::class,
+            MatcherFactory::class => MatcherFactory::class,
         ]
     ]
 ];

@@ -1,8 +1,10 @@
 <?php
 namespace Mte\DeepCopy\Exception;
 
-class RuntimeException
-    extends \RuntimeException
-    implements ExceptionInterface
+/**
+ * Class RuntimeException
+ * @package Mte\DeepCopy\Exception
+ */
+class RuntimeException extends \RuntimeException implements ExceptionInterface
 {
 }

@@ -1,11 +1,9 @@
 <?php
 namespace Mte\DeepCopy;
 
-use DeepCopy\DeepCopy;
 use Zend\Mvc\MvcEvent;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Mte\DeepCopy\Options\ModuleOptions;
-use Mte\DeepCopy\Service\Factory;
 
 /**
  * Class Module
@@ -20,10 +18,14 @@ class Module
     /** @var  ServiceLocatorInterface */
     protected static $modelManager = null;
 
+    /**
+     * @param MvcEvent $event
+     */
     public function onBootstrap(MvcEvent $event)
     {
         self::$modelManager = $event->getApplication()->getServiceManager();
     }
+
     /**
      * @return ServiceLocatorInterface
      */
@@ -31,6 +33,7 @@ class Module
     {
         return self::$modelManager;
     }
+
     /**
      * @return mixed
      */
@@ -57,5 +60,13 @@ class Module
             ],
         ];
         return $config;
+    }
+
+    /**
+     * @return array|object
+     */
+    public function getModuleOptions()
+    {
+        return self::$modelManager->get(ModuleOptions::class);
     }
 }

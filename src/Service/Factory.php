@@ -5,8 +5,10 @@ use Zend\ServiceManager\AbstractFactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Mte\DeepCopy\Options\ModuleOptions;
 use Mte\DeepCopy\Exception\RuntimeException;
-use Mte\DeepCopy\Exception\InvalidArgumentException;
-use MteBase\Service\AbstractService;
+use Zend\Stdlib\InitializableInterface;
+use ReflectionClass;
+use Mte\DeepCopy\Filter\Factory as FilterFactory;
+use Mte\DeepCopy\Matcher\Factory as MatcherFactory;
 
 /**
  * Class AbstractFactory
@@ -64,17 +66,33 @@ class Factory implements AbstractFactoryInterface
         $serviceClass = isset($serviceOptions['class']) ? $serviceOptions['class'] : null;
         $serviceOptions = isset($serviceOptions['options']) ? $serviceOptions['options'] : null;
 
-        /** @var Copy $service */
-        $service = new $serviceClass($serviceOptions);
-        if ($service instanceof AbstractService
-            && method_exists($service, 'init')
-        ) {
-            $service->setServiceManager($serviceLocator);
-            $service->init();
-            return $service;
-        } else {
-            throw new RuntimeException("Не верный тип объекта");
+        $reflectionClass = new ReflectionClass($serviceClass);
+
+        if (!$reflectionClass->isInstantiable()) {
+            throw new Exception\RuntimeException(
+                sprintf('Class %s not found', $serviceClass)
+            );
         }
+
+        if (!$reflectionClass->implementsInterface(CopyInterface::class)) {
+            throw new Exception\RuntimeException(
+                sprintf('Сервис клонирования должен наследовать %s', CopyInterface::class)
+            );
+        }
+
+        $service = $reflectionClass->newInstanceArgs([
+            $serviceLocator->get('DeepCopy'),
+            $serviceLocator->get(ModuleOptions::class),
+            $serviceLocator->get(FilterFactory::class),
+            $serviceLocator->get(MatcherFactory::class),
+            $serviceOptions
+        ]);
+
+        if ($service instanceof InitializableInterface) {
+            $service->init();
+        }
+
+        return $service;
     }
 
     /**
