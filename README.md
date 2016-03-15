@@ -1,4 +1,7 @@
 ## mte\DeepCopy
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Vvar/deep-copy/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Vvar/deep-copy/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/Vvar/deep-copy/badges/build.png?b=master)](https://scrutinizer-ci.com/g/Vvar/deep-copy/build-status/master)
+
 Expansion module https://github.com/myclabs/DeepCopy for integration with zf2.
 
 ## Install
