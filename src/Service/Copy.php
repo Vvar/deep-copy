@@ -160,11 +160,15 @@ class Copy implements InitializableInterface, CopyInterface
      */
     protected function addFilter(DeepCopy $deepCopy, $params)
     {
-        $filter = $this->createForFilter('filter', $params);
-        $matcher = $this->createForFilter('matcher', $params);
+        if (array_key_exists(['filter', 'matcher'], $params)) {
+            $filter = $this->createForFilter('filter', $params);
+            $matcher = $this->createForFilter('matcher', $params);
 
-        if ($matcher instanceof Matcher && $filter instanceof Filter) {
-            $deepCopy->addFilter($filter, $matcher);
+            if ($matcher instanceof Matcher && $filter instanceof Filter) {
+                $deepCopy->addFilter($filter, $matcher);
+            }
+        } else {
+            throw new Exception\RuntimeException("Not have the required parameters");
         }
     }
 
