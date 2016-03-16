@@ -49,7 +49,7 @@ class Copy implements InitializableInterface, CopyInterface
      * @param array $params
      */
     public function __construct(
-        $deepCopy,
+        DeepCopy $deepCopy,
         ModuleOptions $moduleOptions,
         FactoryInterface $filterFactory,
         FactoryInterface $matcher,
