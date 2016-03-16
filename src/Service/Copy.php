@@ -232,7 +232,7 @@ class Copy implements InitializableInterface, CopyInterface
     }
 
     /**
-     * @param $deepCopy $deepCopy
+     * @param DeepCopy $deepCopy
      * @return $this
      */
     public function setDeepCopy($deepCopy)
