@@ -1,13 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: strahov.v
- * Date: 15.03.2016
- * Time: 16:12
- */
-
 namespace Mte\DeepCopy\Service;
 
+/**
+ * Interface FactoryInterface
+ * @package Mte\DeepCopy\Service
+ */
 interface FactoryInterface
 {
     /**
