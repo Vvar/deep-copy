@@ -1,9 +1,9 @@
 <?php
-namespace Mte\DeepCopy\Exception;
+namespace NNX\DeepCopy\Exception;
 
 /**
  * Interface ExceptionInterface
- * @package Mte\DeepCopy\Exception
+ * @package NNX\DeepCopy\Exception
  */
 interface ExceptionInterface
 {

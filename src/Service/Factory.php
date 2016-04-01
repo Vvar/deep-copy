@@ -1,18 +1,18 @@
 <?php
-namespace Mte\DeepCopy\Service;
+namespace NNX\DeepCopy\Service;
 
 use Zend\ServiceManager\AbstractFactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use Mte\DeepCopy\Options\ModuleOptions;
-use Mte\DeepCopy\Exception\RuntimeException;
+use NNX\DeepCopy\Options\ModuleOptions;
+use NNX\DeepCopy\Exception\RuntimeException;
 use Zend\Stdlib\InitializableInterface;
 use ReflectionClass;
-use Mte\DeepCopy\Filter\Factory as FilterFactory;
-use Mte\DeepCopy\Matcher\Factory as MatcherFactory;
+use NNX\DeepCopy\Filter\Factory as FilterFactory;
+use NNX\DeepCopy\Matcher\Factory as MatcherFactory;
 
 /**
  * Class AbstractFactory
- * @package Mte\MteDeepCopy\Service
+ * @package NNX\DeepCopy\Service
  */
 class Factory implements AbstractFactoryInterface
 {
@@ -20,7 +20,7 @@ class Factory implements AbstractFactoryInterface
      * Алиас
      * @var string
      */
-    protected $alias = 'mteDeepCopy';
+    protected $alias = 'nnxDeepCopy';
 
     /**
      * @param array $options
@@ -55,7 +55,7 @@ class Factory implements AbstractFactoryInterface
     public function createServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
     {
         $className = substr_replace($requestedName, '', 0, strlen($this->getAlias()) + 1);
-        /** @var \Mte\DeepCopy\Options\ModuleOptions $moduleOptions */
+        /** @var \NNX\DeepCopy\Options\ModuleOptions $moduleOptions */
         $moduleOptions = $serviceLocator->get(ModuleOptions::class);
         $serviceOptions = $moduleOptions->getServiceParams($className);
 

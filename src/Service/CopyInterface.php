@@ -1,9 +1,9 @@
 <?php
-namespace Mte\DeepCopy\Service;
+namespace NNX\DeepCopy\Service;
 
 /**
  * Interface CopyInterface
- * @package Mte\DeepCopy\Service
+ * @package NNX\DeepCopy\Service
  */
 interface CopyInterface
 {

@@ -1,13 +1,13 @@
 <?php
-namespace Mte\DeepCopy\Filter;
+namespace NNX\DeepCopy\Filter;
 
 use DeepCopy\Filter\Filter;
-use Mte\DeepCopy\Service\FactoryInterface;
+use NNX\DeepCopy\Service\FactoryInterface;
 use ReflectionClass;
 
 /**
  * Class Factory
- * @package Mte\DeepCopy\Filter
+ * @package NNX\DeepCopy\Filter
  */
 class Factory implements FactoryInterface
 {

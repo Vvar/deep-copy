@@ -1,11 +1,11 @@
 <?php
-namespace Mte\DeepCopy\Service\Exception;
+namespace NNX\DeepCopy\Service\Exception;
 
-use Mte\DeepCopy\Exception\InvalidArgumentException as BaseInvalidArgumentException;
+use NNX\DeepCopy\Exception\InvalidArgumentException as BaseInvalidArgumentException;
 
 /**
  * Class InvalidArgumentException
- * @package Mte\DeepCopy\Service\Exception
+ * @package NNX\DeepCopy\Service\Exception
  */
 class InvalidArgumentException extends BaseInvalidArgumentException
 {

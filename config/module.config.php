@@ -1,19 +1,19 @@
 <?php
 
 use DeepCopy\DeepCopy;
-use Mte\DeepCopy\Options\ModuleOptions;
-use Mte\DeepCopy\Service\Factory;
-use Mte\DeepCopy\Filter\Factory as FilterFactory;
-use Mte\DeepCopy\Matcher\Factory as MatcherFactory;
+use NNX\DeepCopy\Options\ModuleOptions;
+use NNX\DeepCopy\Service\Factory;
+use NNX\DeepCopy\Filter\Factory as FilterFactory;
+use NNX\DeepCopy\Matcher\Factory as MatcherFactory;
 
 return [
-    'mteDeepCopy' => [
+    'nnxDeepCopy' => [
         'service' => require 'service.config.php',
         'objectsCopyScheme' => require 'objectsCopyScheme.config.php',
     ],
     'service_manager' => [
         'aliases' => [
-            'mteDeepCopyOptions' => ModuleOptions::class,
+            'nnxDeepCopyOptions' => ModuleOptions::class,
         ],
         'factories' => [
             ModuleOptions::class => ModuleOptions::class,

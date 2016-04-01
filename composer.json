@@ -1,5 +1,5 @@
 {
-  "name": "mte/deep-copy",
+  "name": "nnx/deep-copy",
   "description": "Модуль клонирования объектов",
   "type": "library",
   "homepage": "git@github.com:Vvar/deep-copy.git",
@@ -13,7 +13,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "Mte\\DeepCopy\\": "src"
+      "nnx\\DeepCopy\\": "src"
     },
     "classmap": [
       "./Module.php"

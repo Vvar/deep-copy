@@ -1,9 +1,9 @@
 <?php
-use Mte\DeepCopy\Service;
+use NNX\DeepCopy\Service;
 
 return [
     /**
-     * Use: $this->getServiceLocator()->get('mteDeepCopyService_classNameAlias');
+     * Use: $this->getServiceLocator()->get('nnxDeepCopyService_classNameAlias');
      */
     'classNameAlias' => [
         'class' => Service\Copy::class,

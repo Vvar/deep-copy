@@ -1,11 +1,11 @@
 <?php
-namespace Mte\DeepCopy\Filter\Exception;
+namespace NNX\DeepCopy\Filter\Exception;
 
-use Mte\DeepCopy\Exception\RuntimeException as BaseRuntimeException;
+use NNX\DeepCopy\Exception\RuntimeException as BaseRuntimeException;
 
 /**
  * Class RuntimeException
- * @package Mte\DeepCopy\Filter\Exception
+ * @package NNX\DeepCopy\Filter\Exception
  */
 class RuntimeException extends BaseRuntimeException
 {

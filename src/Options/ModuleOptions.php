@@ -1,5 +1,5 @@
 <?php
-namespace Mte\DeepCopy\Options;
+namespace NNX\DeepCopy\Options;
 
 use Zend\Stdlib\AbstractOptions;
 use Zend\ServiceManager\FactoryInterface;
@@ -7,7 +7,7 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
  * Class ModuleOptions
- * @package Mte\DeepCopy\Options
+ * @package NNX\DeepCopy\Options
  */
 class ModuleOptions extends AbstractOptions implements FactoryInterface
 {
@@ -15,7 +15,7 @@ class ModuleOptions extends AbstractOptions implements FactoryInterface
      * Ключ конфигурации
      * @var string
      */
-    private $configPrefix = 'mteDeepCopy';
+    private $configPrefix = 'nnxDeepCopy';
 
     /**
      * @var array

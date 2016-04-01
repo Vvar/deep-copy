@@ -1,16 +1,16 @@
 <?php
-namespace Mte\DeepCopy\Service;
+namespace NNX\DeepCopy\Service;
 
 use DeepCopy\Filter\Filter;
 use DeepCopy\DeepCopy;
 use DeepCopy\Matcher\Matcher;
-use Mte\DeepCopy\Options\ModuleOptions;
+use NNX\DeepCopy\Options\ModuleOptions;
 use Zend\Stdlib\InitializableInterface;
 
 
 /**
  * Class Copy
- * @package Mte\DeepCopy\Service
+ * @package NNX\DeepCopy\Service
  */
 class Copy implements InitializableInterface, CopyInterface
 {

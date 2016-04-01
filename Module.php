@@ -1,13 +1,13 @@
 <?php
-namespace Mte\DeepCopy;
+namespace NNX\DeepCopy;
 
 use Zend\Mvc\MvcEvent;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use Mte\DeepCopy\Options\ModuleOptions;
+use NNX\DeepCopy\Options\ModuleOptions;
 
 /**
  * Class Module
- * @package Mte\DeepCopy
+ * @package NNX\DeepCopy
  */
 class Module
 {
