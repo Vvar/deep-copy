@@ -1,10 +1,10 @@
 <?php
 
 use DeepCopy\DeepCopy;
-use NNX\DeepCopy\Options\ModuleOptions;
-use NNX\DeepCopy\Service\Factory;
-use NNX\DeepCopy\Filter\Factory as FilterFactory;
-use NNX\DeepCopy\Matcher\Factory as MatcherFactory;
+use Nnx\DeepCopy\Options\ModuleOptions;
+use Nnx\DeepCopy\Service\Factory;
+use Nnx\DeepCopy\Filter\Factory as FilterFactory;
+use Nnx\DeepCopy\Matcher\Factory as MatcherFactory;
 
 return [
     'nnxDeepCopy' => [

@@ -1,9 +1,9 @@
 <?php
-namespace NNX\DeepCopy\Exception;
+namespace Nnx\DeepCopy\Exception;
 
 /**
  * Class InvalidArgumentException
- * @package NNX\DeepCopy\Exception
+ * @package Nnx\DeepCopy\Exception
  */
 class InvalidArgumentException extends \InvalidArgumentException implements ExceptionInterface
 {

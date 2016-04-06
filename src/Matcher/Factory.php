@@ -1,13 +1,13 @@
 <?php
-namespace NNX\DeepCopy\Matcher;
+namespace Nnx\DeepCopy\Matcher;
 
 use DeepCopy\Matcher\Matcher;
-use NNX\DeepCopy\Service\FactoryInterface;
+use Nnx\DeepCopy\Service\FactoryInterface;
 use ReflectionClass;
 
 /**
  * Class Factory
- * @package NNX\DeepCopy\Matcher
+ * @package Nnx\DeepCopy\Matcher
  */
 class Factory implements FactoryInterface
 {

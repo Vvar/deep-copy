@@ -1,11 +1,11 @@
 <?php
-namespace NNX\DeepCopy\Filter\Exception;
+namespace Nnx\DeepCopy\Filter\Exception;
 
-use NNX\DeepCopy\Exception\InvalidArgumentException as BaseInvalidArgumentException;
+use Nnx\DeepCopy\Exception\InvalidArgumentException as BaseInvalidArgumentException;
 
 /**
  * Class InvalidArgumentException
- * @package NNX\DeepCopy\Filter\Exception
+ * @package Nnx\DeepCopy\Filter\Exception
  */
 class InvalidArgumentException extends BaseInvalidArgumentException
 {

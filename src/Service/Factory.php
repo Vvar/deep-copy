@@ -1,18 +1,18 @@
 <?php
-namespace NNX\DeepCopy\Service;
+namespace Nnx\DeepCopy\Service;
 
 use Zend\ServiceManager\AbstractFactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use NNX\DeepCopy\Options\ModuleOptions;
-use NNX\DeepCopy\Exception\RuntimeException;
+use Nnx\DeepCopy\Options\ModuleOptions;
+use Nnx\DeepCopy\Exception\RuntimeException;
 use Zend\Stdlib\InitializableInterface;
 use ReflectionClass;
-use NNX\DeepCopy\Filter\Factory as FilterFactory;
-use NNX\DeepCopy\Matcher\Factory as MatcherFactory;
+use Nnx\DeepCopy\Filter\Factory as FilterFactory;
+use Nnx\DeepCopy\Matcher\Factory as MatcherFactory;
 
 /**
  * Class AbstractFactory
- * @package NNX\DeepCopy\Service
+ * @package Nnx\DeepCopy\Service
  */
 class Factory implements AbstractFactoryInterface
 {
@@ -55,7 +55,7 @@ class Factory implements AbstractFactoryInterface
     public function createServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
     {
         $className = substr_replace($requestedName, '', 0, strlen($this->getAlias()) + 1);
-        /** @var \NNX\DeepCopy\Options\ModuleOptions $moduleOptions */
+        /** @var \Nnx\DeepCopy\Options\ModuleOptions $moduleOptions */
         $moduleOptions = $serviceLocator->get(ModuleOptions::class);
         $serviceOptions = $moduleOptions->getServiceParams($className);
 

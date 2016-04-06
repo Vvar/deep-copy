@@ -1,9 +1,9 @@
 <?php
-namespace NNX\DeepCopy\Exception;
+namespace Nnx\DeepCopy\Exception;
 
 /**
  * Interface ExceptionInterface
- * @package NNX\DeepCopy\Exception
+ * @package Nnx\DeepCopy\Exception
  */
 interface ExceptionInterface
 {

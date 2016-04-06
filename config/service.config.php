@@ -1,5 +1,5 @@
 <?php
-use NNX\DeepCopy\Service;
+use Nnx\DeepCopy\Service;
 
 return [
     /**

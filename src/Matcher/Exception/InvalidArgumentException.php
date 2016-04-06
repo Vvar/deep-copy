@@ -1,11 +1,11 @@
 <?php
-namespace NNX\DeepCopy\Matcher\Exception;
+namespace Nnx\DeepCopy\Matcher\Exception;
 
-use NNX\DeepCopy\Exception\InvalidArgumentException as BaseInvalidArgumentException;
+use Nnx\DeepCopy\Exception\InvalidArgumentException as BaseInvalidArgumentException;
 
 /**
  * Class InvalidArgumentException
- * @package NNX\DeepCopy\Matcher\Exception
+ * @package Nnx\DeepCopy\Matcher\Exception
  */
 class InvalidArgumentException extends BaseInvalidArgumentException
 {

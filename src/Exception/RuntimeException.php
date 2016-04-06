@@ -1,9 +1,9 @@
 <?php
-namespace NNX\DeepCopy\Exception;
+namespace Nnx\DeepCopy\Exception;
 
 /**
  * Class RuntimeException
- * @package NNX\DeepCopy\Exception
+ * @package Nnx\DeepCopy\Exception
  */
 class RuntimeException extends \RuntimeException implements ExceptionInterface
 {

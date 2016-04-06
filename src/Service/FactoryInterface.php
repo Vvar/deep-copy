@@ -1,9 +1,9 @@
 <?php
-namespace NNX\DeepCopy\Service;
+namespace Nnx\DeepCopy\Service;
 
 /**
  * Interface FactoryInterface
- * @package NNX\DeepCopy\Service
+ * @package Nnx\DeepCopy\Service
  */
 interface FactoryInterface
 {

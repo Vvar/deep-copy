@@ -1,5 +1,5 @@
 <?php
-namespace NNX\DeepCopy\Options;
+namespace Nnx\DeepCopy\Options;
 
 use Zend\Stdlib\AbstractOptions;
 use Zend\ServiceManager\FactoryInterface;
@@ -7,7 +7,7 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
  * Class ModuleOptions
- * @package NNX\DeepCopy\Options
+ * @package Nnx\DeepCopy\Options
  */
 class ModuleOptions extends AbstractOptions implements FactoryInterface
 {
