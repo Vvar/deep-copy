@@ -24,8 +24,7 @@
     "zendframework/zendframework": "2.4.*",
     "doctrine/dbal": "2.*",
     "doctrine/doctrine-orm-module": "0.*",
-    "myclabs/deep-copy" : "dev-master"
-
+    "myclabs/deep-copy" : "1.5.2"
   },
   "require-dev": {
     "ext-curl": "*",
