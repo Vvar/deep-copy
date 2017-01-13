@@ -25,6 +25,9 @@ return [
             'deepCopy' => DeepCopy::class,
             FilterFactory::class => FilterFactory::class,
             MatcherFactory::class => MatcherFactory::class,
-        ]
+        ],
+        'shared' => [
+            'deepCopy' => false
+        ],
     ]
 ];
